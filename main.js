@@ -5,9 +5,9 @@ const gameBoard = (function(){
         return{name, position}
     }
     const player1 = newPlayer("Sergio", "x");
-    console.log(player1.name);
+    console.log(player1.name, player1.position);
     const player2 = newPlayer("Cathy", "o");
-    console.log(player2.name);
+    console.log(player2.name, player2.position);
 
     let gameOver = false;
     const winningCombos = [
@@ -25,7 +25,7 @@ const gameBoard = (function(){
     let currentPlayerIndex = 0;
 
     function nextTurn() {
-        currentPlayerIndex = 1 -currentPlayerIndex;
+        currentPlayerIndex = 1 - currentPlayerIndex;
     }
 
     const container = document.querySelector(".container");
@@ -43,11 +43,13 @@ const gameBoard = (function(){
         cell.addEventListener('click', () => {
             if(gameOver) return;
             if (cell.textContent === ""){
-                cell.textContent = players[currentPlayerIndex].position;
-                const idx = Number(cell.dataset.index);
-                board[idx] = players[currentPlayerIndex].position;
-
                 const mark = players[currentPlayerIndex].position;
+                const idx = Number(cell.dataset.index);
+                console.log(idx);
+                
+                cell.textContent = mark;
+                board[idx] = mark;
+
                 const playerName = players[currentPlayerIndex].name;
                 if(checkWinner(mark)) {
                     console.log(`${playerName} wins!`);
@@ -81,11 +83,9 @@ const gameBoard = (function(){
     resetBtn.addEventListener("click", reset);
     resetBtn.addEventListener("mouseenter", () =>{
         resetBtn.style.backgroundColor = 'lightblue';
-    })
+    });
     resetBtn.addEventListener("mouseleave", () =>{
         resetBtn.style.backgroundColor = 'white';
-    })
-    
-    return {reset};
+    });
 
 })();
