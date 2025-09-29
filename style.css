@@ -1,13 +1,31 @@
-.container {
-    background-color: red;
-    height: 100vh;
+body {
+    background-color: black;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
 }
 
-.card{
+.container {
+    height: 50vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    padding: 10px;
+    grid-template: repeat(3, 100px) / repeat(3, 100px);
+}
+
+button {
+    text-align: center;
+    margin-top: 150px;
+}
+
+.cell{
     background-color: white;
     height: 100px;
     width: 100px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
 }
