@@ -4,9 +4,9 @@ const gameBoard = (function(){
     function newPlayer(name, position) {
         return{name, position}
     }
-    const player1 = newPlayer("Sergio", "x");
+    const player1 = newPlayer(prompt("What is your name?"), "x");
     console.log(player1.name, player1.position);
-    const player2 = newPlayer("Cathy", "o");
+    const player2 = newPlayer(prompt("What is your name?"), "o");
     console.log(player2.name, player2.position);
 
     let gameOver = false;
@@ -20,7 +20,7 @@ const gameBoard = (function(){
         return winningCombos.some(combo => combo.every(i => board[i] === mark));
     }
 
-    
+
     const players = [player1, player2];
     let currentPlayerIndex = 0;
 
@@ -46,7 +46,7 @@ const gameBoard = (function(){
                 const mark = players[currentPlayerIndex].position;
                 const idx = Number(cell.dataset.index);
                 console.log(idx);
-                
+
                 cell.textContent = mark;
                 board[idx] = mark;
 
